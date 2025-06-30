@@ -6,7 +6,9 @@ import Patients from "./pages/Patients";
 import Incidents from "./pages/Incidents";
 import Calendar from "./pages/Calendar";
 import MyProfile from "./pages/MyProfile";
+import PatientView from "./pages/PatientView";
 import PrivateRoute from "./routes/PrivateRoute";
+import Layout from "./components/Common/Layout";
 import { useAuth } from "./context/AuthContext";
 
 export default function App() {
@@ -20,7 +22,9 @@ export default function App() {
           path="/dashboard"
           element={
             <PrivateRoute>
-              <Dashboard />
+              <Layout>
+                <Dashboard />
+              </Layout>
             </PrivateRoute>
           }
         />
@@ -28,7 +32,9 @@ export default function App() {
           path="/patients"
           element={
             <PrivateRoute roles={["Admin"]}>
-              <Patients />
+              <Layout>
+                <Patients />
+              </Layout>
             </PrivateRoute>
           }
         />
@@ -36,7 +42,9 @@ export default function App() {
           path="/incidents"
           element={
             <PrivateRoute roles={["Admin"]}>
-              <Incidents />
+              <Layout>
+                <Incidents />
+              </Layout>
             </PrivateRoute>
           }
         />
@@ -44,7 +52,9 @@ export default function App() {
           path="/calendar"
           element={
             <PrivateRoute roles={["Admin"]}>
-              <Calendar />
+              <Layout>
+                <Calendar />
+              </Layout>
             </PrivateRoute>
           }
         />
@@ -52,7 +62,19 @@ export default function App() {
           path="/profile"
           element={
             <PrivateRoute>
-              <MyProfile />
+              <Layout>
+                <MyProfile />
+              </Layout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/patient-view"
+          element={
+            <PrivateRoute roles={["Patient"]}>
+              <Layout>
+                <PatientView />
+              </Layout>
             </PrivateRoute>
           }
         />

@@ -14,12 +14,44 @@ export function AuthProvider({ children }) {
     if (!getItem("incidents")) setItem("incidents", mockData.incidents);
   }, []);
 
+  // Listen for storage changes from other tabs
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === "user") {
+        const newUser = e.newValue ? JSON.parse(e.newValue) : null;
+        setUser(newUser);
+      }
+    };
+
+    // Listen for storage events (cross-tab communication)
+    window.addEventListener("storage", handleStorageChange);
+
+    // Also listen for custom events for same-tab communication
+    const handleCustomStorageChange = (e) => {
+      if (e.detail.key === "user") {
+        setUser(e.detail.value);
+      }
+    };
+    window.addEventListener("customStorageChange", handleCustomStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("customStorageChange", handleCustomStorageChange);
+    };
+  }, []);
+
   const login = (email, password) => {
     const users = getItem("users") || [];
     const found = users.find(u => u.email === email && u.password === password);
     if (found) {
       setUser(found);
       setItem("user", found);
+      
+      // Dispatch custom event for same-tab communication
+      window.dispatchEvent(new CustomEvent("customStorageChange", {
+        detail: { key: "user", value: found }
+      }));
+      
       return { success: true, user: found };
     }
     return { success: false, message: "Invalid credentials" };
@@ -28,6 +60,11 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUser(null);
     removeItem("user");
+    
+    // Dispatch custom event for same-tab communication
+    window.dispatchEvent(new CustomEvent("customStorageChange", {
+      detail: { key: "user", value: null }
+    }));
   };
 
   return (
