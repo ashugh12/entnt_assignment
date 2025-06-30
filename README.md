@@ -4,7 +4,7 @@ A comprehensive frontend-only dental clinic management system built with React, 
 
 ## 🚀 Live Demo
 
-[Deployed Link] - [Add your deployment link here]
+[Deployed Link] - https://github.com/ashugh12/entnt_assignment
 [GitHub Repository] - [Add your repository link here]
 
 ## 📋 Table of Contents
