@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { getItem } from "../utils/localStorage";
-import LogOut from "./LogOut";
+import { useAuth } from "../context/AuthContext.jsx";
+import { getItem } from "../utils/localStorage.js";
+import LogOut from "./LogOut.jsx";
 
 function EntntHeader() {
   return (

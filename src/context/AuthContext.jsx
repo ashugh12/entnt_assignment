@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { getItem, setItem, removeItem } from "../utils/localStorage";
-import { mockData } from "../data/mockData";
+import { getItem, setItem, removeItem } from "../utils/localStorage.js";
+import { mockData } from "../data/mockData.js";
 
 const AuthContext = createContext();
 

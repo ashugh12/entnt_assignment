@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getItem } from "../utils/localStorage";
+import { getItem } from "../utils/localStorage.js";
 
 export default function Incidents() {
   const [incidents, setIncidents] = useState([]);
