@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getItem, setItem } from "../utils/localStorage.js";
+import { getItem, setItem } from "../utils/localStorage";
 
 export default function Patients() {
   const [patients, setPatients] = useState([]);
