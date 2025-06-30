@@ -4,8 +4,8 @@ A modern, role-based React frontend application for dental practice management. 
 
 ## 🚀 Live Demo
 
-[Deployed Link] - https://github.com/ashugh12/entnt_assignment
-[GitHub Repository] - [Add your repository link here]
+[GitHub Link] - https://github.com/ashugh12/entnt_assignment
+[Deployed Repository] - [Add your repository link here]
 
 ## 📋 Table of Contents
 
